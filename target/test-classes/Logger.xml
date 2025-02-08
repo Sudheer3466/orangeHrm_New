@@ -1,0 +1,29 @@
+<Configuration status="INFO">
+    <Properties>
+        <Property name="basePath">logs</Property> <!-- Removed the dot before 'logs' -->
+    </Properties>
+
+    <Appenders>
+        <!-- Console Appender -->
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <!-- Rolling File Appender -->
+        <RollingFile name="File"
+                     fileName="${basePath}/automation.log"
+                     filePattern="${basePath}/automation-%d{yyyy-MMM-dd}.log.gz">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB"/> <!-- Increased size limit -->
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="File"/>
+            <AppenderRef ref="CONSOLE"/> <!-- Added console logging for better debugging -->
+        </Root>
+    </Loggers>
+</Configuration>
