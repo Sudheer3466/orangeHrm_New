@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -45,11 +46,12 @@ public Properties p;
 		}
 		
 		//
-		FileReader file=new FileReader("C:\\Users\\Malyadri Reddy\\eclipse-workspace\\orangeHRM\\src\\test\\resources\\Config.PropertiesFile");
+		FileReader file=new FileReader(".\\src\\test\\resources\\Config.properties");
 		p=new Properties();
 		p.load(file);
 	
-		
+		ChromeOptions cp=new ChromeOptions();
+		cp.addArguments("--remote-allow-origins");
 		driver=new ChromeDriver();
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();

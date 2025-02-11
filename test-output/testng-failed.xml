@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" parallel="tests" name="FireFoxTest(failed)">
-    <parameter name="browser" value="Firefox"/>
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <parameter name="browser" value="edge"/>
+  <test thread-count="5" name="Master suite(failed)">
     <classes>
       <class name="testCases.tc001_HomePage">
         <methods>
@@ -12,5 +12,5 @@
         </methods>
       </class> <!-- testCases.tc001_HomePage -->
     </classes>
-  </test> <!-- FireFoxTest(failed) -->
+  </test> <!-- Master suite(failed) -->
 </suite> <!-- Failed suite [Suite] -->

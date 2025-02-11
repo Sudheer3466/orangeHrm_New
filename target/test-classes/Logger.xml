@@ -1,29 +1,27 @@
-<Configuration status="INFO">
-    <Properties>
-        <Property name="basePath">logs</Property> <!-- Removed the dot before 'logs' -->
-    </Properties>
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+
+<Properties>
+<Property name="basePath">./logs</Property>
+</Properties>
 
     <Appenders>
         <!-- Console Appender -->
-        <Console name="CONSOLE" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
-
-        <!-- Rolling File Appender -->
-        <RollingFile name="File"
-                     fileName="${basePath}/automation.log"
-                     filePattern="${basePath}/automation-%d{yyyy-MMM-dd}.log.gz">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-            <Policies>
-                <SizeBasedTriggeringPolicy size="10MB"/> <!-- Increased size limit -->
-            </Policies>
-        </RollingFile>
+        
+        <!-- File Appender -->
+        <RolingFile name="File" fileName="${basepath}/selenium.log" filepattern="${basepath}/selenium-%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n">
+                <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+                <SizeBasedTriggeringPolicy size="5000"/>
+        </RolingFile>
+     
     </Appenders>
-
-    <Loggers>
-        <Root level="INFO">
+        <Loggers>
+             <!-- Root Logger -->
+        <Root level="Info">
             <AppenderRef ref="File"/>
-            <AppenderRef ref="CONSOLE"/> <!-- Added console logging for better debugging -->
         </Root>
     </Loggers>
-</Configuration>
+</configuration>
