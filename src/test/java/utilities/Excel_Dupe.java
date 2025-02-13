@@ -1,5 +1,4 @@
 package utilities;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -12,7 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.Test;
 
 
-public class Excel_Utils {
+public class Excel_Dupe {
 	public FileInputStream fi;
 	public static FileOutputStream fo;
 	public static XSSFWorkbook wb;
@@ -50,35 +49,12 @@ public class Excel_Utils {
 		FileInputStream fi=new FileInputStream(file);
 		wb=new XSSFWorkbook(file);
 		sh=wb.getSheet(SheetName);
-		row=sh.getRow(rowNumber);
-		cell=row.getCell(cellNumber);
-				String data;
-		try {
-			data=cell.toString();
-		}
-		catch(Exception e)
-		{
-			data="";
-		}
-		wb.close();
-		fi.close();
-		return data;
+		String cellData=sh.getRow(rowNumber).getCell(cellNumber).toString();
+		return cellData;
+
+
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

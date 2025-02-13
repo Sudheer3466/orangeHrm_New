@@ -19,7 +19,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
 public class BaseClass  {
-public WebDriver driver;
+public static WebDriver driver;
 public Logger logger;
 public Properties p;
 
@@ -64,7 +64,7 @@ public Properties p;
 @AfterClass
 	public void tearDown() 
 	{
-		driver.close();
+		driver.quit();
 	}
 
 public String randomString() {
